@@ -19,20 +19,20 @@ addBar.appendChild(enterIcon);
 
 const listArr = [
   {
-  description: 'Finish To Do list project',
-  completed: false,
-  index: 3
+    description: 'Finish To Do list project',
+    completed: false,
+    index: 3,
   },
   {
-  description: 'Wash the dishes',
-  completed: true,
-  index: 1
+    description: 'Wash the dishes',
+    completed: true,
+    index: 1,
   },
   {
-  description: 'Do the laundry',
-  completed: false,
-  index: 2
-  }
+    description: 'Do the laundry',
+    completed: false,
+    index: 2,
+  },
 ];
 
 const listWrapperArr = [];
@@ -41,10 +41,10 @@ const listImgArr = [];
 const listCheckboxArr = [];
 const listTextArr = [];
 
-function displayList () {
-  listArr.sort(function (x, y) {
-    return x.index - y.index;
-  });
+function displayList() {
+  listArr.sort((x, y) => (
+    x.index - y.index
+  ));
   for (let i = 0; i < listArr.length; i += 1) {
     listWrapperArr[i] = document.createElement('li');
     listWrapperArr[i].classList.add('list-wrapper');
@@ -59,14 +59,14 @@ function displayList () {
     listWrapperArr[i].appendChild(listImgArr[i]);
 
     listCheckboxArr[i] = document.createElement('input');
-    listCheckboxArr[i].type = "checkbox";
+    listCheckboxArr[i].type = 'checkbox';
     listCheckboxArr[i].classList.add('checkbox');
     listContentArr[i].appendChild(listCheckboxArr[i]);
     listTextArr[i] = document.createElement('p');
     listTextArr[i].classList.add('list-text');
     listTextArr[i].innerHTML = listArr[i].description;
     listContentArr[i].appendChild(listTextArr[i]);
-  };
-};
+  }
+}
 
 displayList();
