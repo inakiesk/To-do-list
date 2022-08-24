@@ -9,6 +9,8 @@ const refreshIcon = new Image();
 const enterIcon = new Image();
 refreshIcon.src = refresh;
 enterIcon.src = enter;
+refreshIcon.classList.add('refresh-icon');
+enterIcon.classList.add('enter-icon');
 
 header.appendChild(refreshIcon);
 addBar.appendChild(enterIcon);
