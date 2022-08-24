@@ -1,14 +1,14 @@
-import _ from 'lodash';
 import './style.css';
+import refresh from '../img/refresh.png';
+import enter from '../img/enter.png';
 
- function component() {
-   const element = document.createElement('div');
+const header = document.querySelector('.header');
+const addBar = document.querySelector('.add-bar');
 
-  // Lodash, now imported by this script
-   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-   element.classList.add('hello');
+const refreshIcon = new Image();
+const enterIcon = new Image();
+refreshIcon.src = refresh;
+enterIcon.src = enter;
 
-   return element;
- }
-
- document.body.appendChild(component());
+header.appendChild(refreshIcon);
+addBar.appendChild(enterIcon);
