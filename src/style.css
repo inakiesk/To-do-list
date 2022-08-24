@@ -12,6 +12,10 @@ body {
   align-items: center;
 }
 
+.hidden {
+  display: none;
+}
+
 .wrapper {
   width: 500px;
   border: 1px solid grey;
@@ -60,4 +64,27 @@ body {
 .clear-text {
   text-decoration: underline;
   color: #5e5d5d;
+}
+
+.list-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  border-top: 1px solid grey;
+}
+
+.list-content {
+  display: flex;
+}
+
+.more-icon {
+  transform: rotate(90deg);
+  height: 15px;
+  width: 15px;
+}
+
+.list-text {
+  margin-left: 5px;
+  font-size: 16px;
 }
