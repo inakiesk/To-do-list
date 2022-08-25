@@ -24,7 +24,8 @@ To get a local copy up and running follow these simple example steps.
     -Internet connection
 
 ### Install & Usage
-    -Download the files from the repository and view the page locally, very simple!
+    -Download the files from the repository, you can use git clone in your terminal.
+    -Once the files are downloaded you can open the files in your preferred browser.
 
     
 ## Author
