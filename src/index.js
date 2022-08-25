@@ -93,8 +93,36 @@ function addTask() {
         listArr.push(newTask);
         localStorage.setItem('task', JSON.stringify(listArr));
         addInput.value = '';
-        list.textContent = '';
-        displayList();
+
+        const newListWrapper = document.createElement('li');
+        newListWrapper.classList.add('list-wrapper');
+        list.appendChild(newListWrapper);
+
+        const newListContent = document.createElement('div');
+        newListContent.classList.add('list-content');
+        newListWrapper.appendChild(newListContent);
+        const newListImg = document.createElement('div');
+        newListImg.classList.add('list-images');
+        newListWrapper.appendChild(newListImg);
+
+        const newListMore = document.createElement('img');
+        newListMore.src = more;
+        newListMore.classList.add('more-icon');
+        newListImg.appendChild(newListMore);
+        const newListTrash = document.createElement('img');
+        newListTrash.src = trash;
+        newListTrash.classList.add('trash');
+        newListImg.appendChild(newListTrash);
+
+        const newListCheckbox = document.createElement('input');
+        newListCheckbox.type = 'checkbox';
+        newListCheckbox.classList.add('checkbox');
+        newListContent.appendChild(newListCheckbox);
+        const newListText = document.createElement('p');
+        newListText.classList.add('list-text');
+        newListText.innerHTML = newTask.description;
+        newListContent.appendChild(newListText);
+
       }
     }
   });
@@ -108,11 +136,13 @@ function removeFunction() {
       for (let i = 0; i < listArr.length; i += 1) {
         if (listArr[i].description === removing ) {
           listArr.splice([i], 1);
+          for (let i = 0; i < listArr.length; i += 1) {
+            listArr[i].index = parseFloat([i]) + 1;
+          }
           localStorage.setItem('task', JSON.stringify(listArr));
         };
       };
-      list.textContent = '';
-      displayList();
+      e.target.parentElement.parentElement.remove();
     }
   });
 }
