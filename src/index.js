@@ -7,6 +7,7 @@ import trash from '../img/trash.png';
 const header = document.querySelector('.header');
 const addBar = document.querySelector('.add-bar');
 const list = document.querySelector('.list');
+const addInput = document.querySelector('.add-bar-text');
 
 const refreshIcon = new Image();
 const enterIcon = new Image();
@@ -18,23 +19,7 @@ enterIcon.classList.add('enter-icon');
 header.appendChild(refreshIcon);
 addBar.appendChild(enterIcon);
 
-const listArr = [
-  {
-    description: 'Finish To Do list project',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'Wash the dishes',
-    completed: true,
-    index: 1,
-  },
-  {
-    description: 'Do the laundry',
-    completed: false,
-    index: 2,
-  },
-];
+const listArr = [];
 
 const listWrapperArr = [];
 const listContentArr = [];
@@ -43,6 +28,7 @@ const listMoreArr = [];
 const listTrashArr = [];
 const listCheckboxArr = [];
 const listTextArr = [];
+const taskInfo = [];
 
 function displayList() {
   listArr.sort((x, y) => (
@@ -81,4 +67,38 @@ function displayList() {
   }
 }
 
+function localCheck() {
+  if (!localStorage.getItem('task')) {
+    localStorage.setItem('task', JSON.stringify(taskInfo));
+  }
+};
+
+function getInfo() {
+  const obtainedInfo = JSON.parse(localStorage.getItem('task'));
+    for (let i = 0; i < obtainedInfo.length; i += 1) {
+      listArr.push(obtainedInfo[i]);
+    }
+}
+
+function addTask() {
+  addInput.addEventListener("keypress", (event)=> {
+    if (event.keyCode === 13) {
+      if (addInput.value !== '') {
+        const newTask = {};
+        newTask.description = addInput.value;
+        newTask.completed = false;
+        newTask.index = listArr.length + 1;
+        listArr.push(newTask);
+        localStorage.setItem('task', JSON.stringify(listArr));
+        addInput.value = '';
+        list.textContent = '';
+        displayList();
+      }
+    }
+  });
+}
+
+localCheck();
+getInfo();
 displayList();
+addTask();
