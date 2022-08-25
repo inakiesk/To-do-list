@@ -2,6 +2,7 @@ import './style.css';
 import refresh from '../img/refresh.png';
 import enter from '../img/enter.png';
 import more from '../img/more.png';
+import trash from '../img/trash.png';
 
 const header = document.querySelector('.header');
 const addBar = document.querySelector('.add-bar');
@@ -38,6 +39,8 @@ const listArr = [
 const listWrapperArr = [];
 const listContentArr = [];
 const listImgArr = [];
+const listMoreArr = [];
+const listTrashArr = [];
 const listCheckboxArr = [];
 const listTextArr = [];
 
@@ -53,10 +56,19 @@ function displayList() {
     listContentArr[i] = document.createElement('div');
     listContentArr[i].classList.add('list-content');
     listWrapperArr[i].appendChild(listContentArr[i]);
-    listImgArr[i] = document.createElement('img');
-    listImgArr[i].src = more;
-    listImgArr[i].classList.add('more-icon');
+    listImgArr[i] = document.createElement('div');
+    listImgArr[i].classList.add('list-images');
     listWrapperArr[i].appendChild(listImgArr[i]);
+
+    listMoreArr[i] = document.createElement('img');
+    listMoreArr[i].src = more;
+    listMoreArr[i].classList.add('more-icon');
+    listImgArr[i].appendChild(listMoreArr[i]);
+    listTrashArr[i] = document.createElement('img');
+    listTrashArr[i].src = trash;
+    listTrashArr[i].classList.add('trash');
+    listTrashArr[i].classList.add('hidden');
+    listImgArr[i].appendChild(listTrashArr[i]);
 
     listCheckboxArr[i] = document.createElement('input');
     listCheckboxArr[i].type = 'checkbox';
