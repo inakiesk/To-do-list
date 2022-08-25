@@ -82,6 +82,7 @@ body {
   transform: rotate(90deg);
   height: 15px;
   width: 15px;
+  margin-right: 10px;
 }
 
 .trash {

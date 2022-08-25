@@ -53,7 +53,6 @@ function displayList() {
     listTrashArr[i] = document.createElement('img');
     listTrashArr[i].src = trash;
     listTrashArr[i].classList.add('trash');
-    listTrashArr[i].classList.add('hidden');
     listImgArr[i].appendChild(listTrashArr[i]);
 
     listCheckboxArr[i] = document.createElement('input');
@@ -64,7 +63,10 @@ function displayList() {
     listTextArr[i].classList.add('list-text');
     listTextArr[i].innerHTML = listArr[i].description;
     listContentArr[i].appendChild(listTextArr[i]);
+
+    listArr[i].index = parseFloat([i]) + 1;
   }
+  localStorage.setItem('task', JSON.stringify(listArr));
 }
 
 function localCheck() {
@@ -98,7 +100,25 @@ function addTask() {
   });
 }
 
+function removeFunction() {
+  const x = document.getElementsByClassName('list')[0];
+  x.addEventListener('click', (e) => {
+    if (e.target.src === trash) {
+      const removing = e.target.parentElement.parentElement.firstChild.lastChild.innerHTML;
+      for (let i = 0; i < listArr.length; i += 1) {
+        if (listArr[i].description === removing ) {
+          listArr.splice([i], 1);
+          localStorage.setItem('task', JSON.stringify(listArr));
+        };
+      };
+      list.textContent = '';
+      displayList();
+    }
+  });
+}
+
 localCheck();
 getInfo();
 displayList();
 addTask();
+removeFunction();
