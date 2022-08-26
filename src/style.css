@@ -79,7 +79,12 @@ body {
 }
 
 .more-icon {
-  transform: rotate(90deg);
+  height: 16px;
+  width: 16px;
+  margin-right: 10px;
+}
+
+.trash {
   height: 15px;
   width: 15px;
 }
