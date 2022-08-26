@@ -64,6 +64,7 @@ body {
 .clear-text {
   text-decoration: underline;
   color: #5e5d5d;
+  padding: 10px 10px;
 }
 
 .list-wrapper {
