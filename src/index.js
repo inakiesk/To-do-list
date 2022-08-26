@@ -65,6 +65,10 @@ function displayList() {
     listTextArr[i].innerHTML = listArr[i].description;
     listContentArr[i].appendChild(listTextArr[i]);
 
+    if (listArr[i].completed === true) {
+      listCheckboxArr[i].checked = true;
+    };
+
     listArr[i].index = parseFloat([i]) + 1;
   }
   localStorage.setItem('task', JSON.stringify(listArr));
