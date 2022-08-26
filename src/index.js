@@ -73,17 +73,17 @@ function localCheck() {
   if (!localStorage.getItem('task')) {
     localStorage.setItem('task', JSON.stringify(taskInfo));
   }
-};
+}
 
 function getInfo() {
   const obtainedInfo = JSON.parse(localStorage.getItem('task'));
-    for (let i = 0; i < obtainedInfo.length; i += 1) {
-      listArr.push(obtainedInfo[i]);
-    }
+  for (let i = 0; i < obtainedInfo.length; i += 1) {
+    listArr.push(obtainedInfo[i]);
+  }
 }
 
 function addTask() {
-  addInput.addEventListener("keypress", (event)=> {
+  addInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
       if (addInput.value !== '') {
         const newTask = {};
@@ -122,7 +122,6 @@ function addTask() {
         newListText.classList.add('list-text');
         newListText.innerHTML = newTask.description;
         newListContent.appendChild(newListText);
-
       }
     }
   });
@@ -140,18 +139,16 @@ function removeFunction() {
             listArr[i].index = parseFloat([i]) + 1;
           }
           localStorage.setItem('task', JSON.stringify(listArr));
-        };
-      };
+        }
+      }
       e.target.parentElement.parentElement.remove();
     }
   });
 }
 
-
 function editFunction() {
   list.addEventListener('click', (y) => {
     if (y.target.src === more) {
-
       const editedText = y.target.parentElement.parentElement.firstChild.lastChild;
       const previousText = editedText.innerHTML;
       const editedBox = y.target.parentElement.parentElement.firstChild.firstChild;
@@ -162,12 +159,12 @@ function editFunction() {
 
       const editInput = document.createElement('input');
       editInput.type = 'text';
-      editInput.placeholder = 'Add to your list...'
+      editInput.placeholder = 'Add to your list...';
       editInput.classList.add('edit-input');
       editInput.value = editedText.innerHTML;
       y.target.parentElement.parentElement.firstChild.appendChild(editInput);
 
-      editInput.addEventListener("keypress", (event)=> {
+      editInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
           if (editInput.value !== '') {
             editedText.innerHTML = editInput.value;
@@ -176,7 +173,7 @@ function editFunction() {
             editedBox.classList.toggle('hidden');
             editedImg.classList.toggle('hidden');
             for (let i = 0; i < listArr.length; i += 1) {
-              if ( listArr[i].description === previousText ) {
+              if (listArr[i].description === previousText) {
                 listArr[i].description = editedText.innerHTML;
               }
             }
