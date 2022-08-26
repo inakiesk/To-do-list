@@ -84,7 +84,7 @@ function getInfo() {
 
 function addTask() {
   addInput.addEventListener("keypress", (event)=> {
-    if (event.keyCode === 13) {
+    if (event.key === 'Enter') {
       if (addInput.value !== '') {
         const newTask = {};
         newTask.description = addInput.value;
@@ -132,9 +132,9 @@ function removeFunction() {
   const x = document.getElementsByClassName('list')[0];
   x.addEventListener('click', (e) => {
     if (e.target.src === trash) {
-      const removing = e.target.parentElement.parentElement.firstChild.lastChild.innerHTML;
+      const removing = e.target.parentElement.parentElement.firstChild.firstChild.nextSibling;
       for (let i = 0; i < listArr.length; i += 1) {
-        if (listArr[i].description === removing ) {
+        if (listArr[i].description === removing.innerHTML) {
           listArr.splice([i], 1);
           for (let i = 0; i < listArr.length; i += 1) {
             listArr[i].index = parseFloat([i]) + 1;
@@ -144,8 +144,46 @@ function removeFunction() {
       };
       e.target.parentElement.parentElement.remove();
     }
-    if (e.target.src === more) {
-      console.log('it works');
+  });
+}
+
+
+function editFunction() {
+  list.addEventListener('click', (y) => {
+    if (y.target.src === more) {
+
+      const editedText = y.target.parentElement.parentElement.firstChild.lastChild;
+      const previousText = editedText.innerHTML;
+      const editedBox = y.target.parentElement.parentElement.firstChild.firstChild;
+      const editedImg = y.target;
+      editedText.classList.toggle('hidden');
+      editedBox.classList.toggle('hidden');
+      editedImg.classList.toggle('hidden');
+
+      const editInput = document.createElement('input');
+      editInput.type = 'text';
+      editInput.placeholder = 'Add to your list...'
+      editInput.classList.add('edit-input');
+      editInput.value = editedText.innerHTML;
+      y.target.parentElement.parentElement.firstChild.appendChild(editInput);
+
+      editInput.addEventListener("keypress", (event)=> {
+        if (event.key === 'Enter') {
+          if (editInput.value !== '') {
+            editedText.innerHTML = editInput.value;
+            editInput.remove();
+            editedText.classList.toggle('hidden');
+            editedBox.classList.toggle('hidden');
+            editedImg.classList.toggle('hidden');
+            for (let i = 0; i < listArr.length; i += 1) {
+              if ( listArr[i].description === previousText ) {
+                listArr[i].description = editedText.innerHTML;
+              }
+            }
+            localStorage.setItem('task', JSON.stringify(listArr));
+          }
+        }
+      });
     }
   });
 }
@@ -155,3 +193,4 @@ getInfo();
 displayList();
 addTask();
 removeFunction();
+editFunction();
