@@ -144,6 +144,9 @@ function removeFunction() {
       };
       e.target.parentElement.parentElement.remove();
     }
+    if (e.target.src === more) {
+      console.log('it works');
+    }
   });
 }
 
