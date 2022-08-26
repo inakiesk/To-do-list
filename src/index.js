@@ -3,6 +3,7 @@ import refresh from '../img/refresh.png';
 import enter from '../img/enter.png';
 import more from '../img/more.png';
 import trash from '../img/trash.png';
+import checkbox from '../modules/checkbox';
 
 const header = document.querySelector('.header');
 const addBar = document.querySelector('.add-bar');
@@ -185,9 +186,12 @@ function editFunction() {
   });
 }
 
+export default listArr;
+
 localCheck();
 getInfo();
 displayList();
 addTask();
 removeFunction();
 editFunction();
+checkbox();
