@@ -8,6 +8,7 @@ function checkbox() {
         for (let i = 0; i < listArr.length; i += 1) {
           if (listArr[i].description === e.target.nextSibling.innerHTML) {
             listArr[i].completed = true;
+            e.target.nextSibling.classList.add('overline');
           }
         }
         localStorage.setItem('task', JSON.stringify(listArr));
@@ -16,6 +17,7 @@ function checkbox() {
         for (let i = 0; i < listArr.length; i += 1) {
           if (listArr[i].description === e.target.nextSibling.innerHTML) {
             listArr[i].completed = false;
+            e.target.nextSibling.classList.remove('overline');
           }
         }
         localStorage.setItem('task', JSON.stringify(listArr));

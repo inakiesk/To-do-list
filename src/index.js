@@ -20,7 +20,7 @@ enterIcon.classList.add('enter-icon');
 header.appendChild(refreshIcon);
 addBar.appendChild(enterIcon);
 
-const listArr = [];
+let listArr = [];
 
 const listWrapperArr = [];
 const listContentArr = [];
@@ -67,6 +67,7 @@ function displayList() {
 
     if (listArr[i].completed === true) {
       listCheckboxArr[i].checked = true;
+      listTextArr[i].classList.add('overline');
     };
 
     listArr[i].index = parseFloat([i]) + 1;
@@ -190,6 +191,15 @@ function editFunction() {
   });
 }
 
+function clearAll() {
+  const clear = document.querySelector('.clear-text');
+  clear.addEventListener('click', () => {
+    listArr = listArr.filter(x => x.completed === false);
+    list.innerHTML = '';
+    displayList();
+  });
+}
+
 export default listArr;
 
 localCheck();
@@ -199,3 +209,4 @@ addTask();
 removeFunction();
 editFunction();
 checkbox();
+clearAll();

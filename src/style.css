@@ -16,6 +16,10 @@ body {
   display: none;
 }
 
+.overline {
+  text-decoration: line-through;
+}
+
 .wrapper {
   width: 500px;
   border: 1px solid grey;
