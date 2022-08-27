@@ -3,6 +3,7 @@ import refresh from '../img/refresh.png';
 import enter from '../img/enter.png';
 import more from '../img/more.png';
 import trash from '../img/trash.png';
+import checkbox from '../modules/checkbox.js';
 
 const header = document.querySelector('.header');
 const addBar = document.querySelector('.add-bar');
@@ -19,7 +20,7 @@ enterIcon.classList.add('enter-icon');
 header.appendChild(refreshIcon);
 addBar.appendChild(enterIcon);
 
-const listArr = [];
+let listArr = [];
 
 const listWrapperArr = [];
 const listContentArr = [];
@@ -63,6 +64,11 @@ function displayList() {
     listTextArr[i].classList.add('list-text');
     listTextArr[i].innerHTML = listArr[i].description;
     listContentArr[i].appendChild(listTextArr[i]);
+
+    if (listArr[i].completed === true) {
+      listCheckboxArr[i].checked = true;
+      listTextArr[i].classList.add('overline');
+    }
 
     listArr[i].index = parseFloat([i]) + 1;
   }
@@ -185,9 +191,44 @@ function editFunction() {
   });
 }
 
+function status() {
+  const x = document.getElementsByClassName('list')[0];
+  x.addEventListener('click', (e) => {
+    if (e.target.classList.contains('checkbox')) {
+      if (e.target.checked) {
+        for (let i = 0; i < listArr.length; i += 1) {
+          if (listArr[i].description === e.target.nextSibling.innerHTML) {
+            listArr[i].completed = true;
+          }
+        }
+        localStorage.setItem('task', JSON.stringify(listArr));
+      } else {
+        for (let i = 0; i < listArr.length; i += 1) {
+          if (listArr[i].description === e.target.nextSibling.innerHTML) {
+            listArr[i].completed = false;
+          }
+        }
+        localStorage.setItem('task', JSON.stringify(listArr));
+      }
+    }
+  });
+}
+
+function clearAll() {
+  const clear = document.querySelector('.clear-text');
+  clear.addEventListener('click', () => {
+    listArr = listArr.filter((x) => x.completed === false);
+    list.innerHTML = '';
+    displayList();
+  });
+}
+
 localCheck();
 getInfo();
 displayList();
 addTask();
 removeFunction();
 editFunction();
+status();
+checkbox();
+clearAll();
