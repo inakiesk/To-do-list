@@ -232,3 +232,4 @@ editFunction();
 status();
 checkbox();
 clearAll();
+sum();
