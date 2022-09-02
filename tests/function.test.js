@@ -33,4 +33,15 @@ describe('Testing', () => {
     ).not.toBe(null);
     expect(localStorage).toHaveLength(1);
   });
+  
+  test('Removing a task', () => {
+    const removeList = new remove();
+    removeList.removeFunction();
+    /*remove test*/
+    expect(
+      removeList.listArr
+    ).toHaveLength(1);
+    /*local storage remove check*/
+    expect(localStorage).toHaveLength(1);
+  });
 });
