@@ -1,6 +1,7 @@
 import Add from './mock/addMock.js';
 import Remove from './mock/removeMock.js';
 import Edit from './mock/editMock.js';
+import Status from './mock/statusMock.js';
 
 document.body.innerHTML = `
 <div class="wrapper">
@@ -57,6 +58,22 @@ describe('Testing', () => {
       editList.listArr[1].description
     ).toEqual('string has been edited');
     /* local storage edit check */
+    expect(
+      oldLocal
+      ).not.toEqual(newLocal);
+  });
+
+  test('Updating completed status in a task', () => {
+    const statusList = new Status();
+    localStorage.setItem('task', JSON.stringify(statusList.listArr));
+    const oldLocal = JSON.parse(localStorage.getItem('task'));
+    statusList.status();
+    const newLocal = JSON.parse(localStorage.getItem('task'));
+    /* Status check test */
+    expect(
+      statusList.listArr[1].completed
+    ).toEqual(true);
+    /* Local storage status change check */
     expect(
       oldLocal
       ).not.toEqual(newLocal);
