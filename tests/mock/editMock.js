@@ -23,4 +23,4 @@ export default class Edit {
     }
     localStorage.setItem('task', JSON.stringify(this.listArr));
   }
-};
+}

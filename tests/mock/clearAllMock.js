@@ -17,7 +17,7 @@ export default class ClearAll {
   }
 
   clearAll() {
-      this.listArr = this.listArr.filter((x) => x.completed === false);
-      localStorage.setItem('task', JSON.stringify(this.listArr));
+    this.listArr = this.listArr.filter((x) => x.completed === false);
+    localStorage.setItem('task', JSON.stringify(this.listArr));
   }
 }

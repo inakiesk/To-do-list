@@ -56,12 +56,12 @@ describe('Testing', () => {
     const newLocal = JSON.parse(localStorage.getItem('task'));
     /* edit test */
     expect(
-      editList.listArr[1].description
+      editList.listArr[1].description,
     ).toEqual('string has been edited');
     /* local storage edit check */
     expect(
-      oldLocal
-      ).not.toEqual(newLocal);
+      oldLocal,
+    ).not.toEqual(newLocal);
   });
 
   test('Updating completed status in a task', () => {
@@ -72,13 +72,14 @@ describe('Testing', () => {
     const newLocal = JSON.parse(localStorage.getItem('task'));
     /* Status check test */
     expect(
-      statusList.listArr[1].completed
+      statusList.listArr[1].completed,
     ).toEqual(true);
     /* Local storage status change check */
     expect(
-      oldLocal
-      ).not.toEqual(newLocal);
+      oldLocal,
+    ).not.toEqual(newLocal);
   });
+
   test('Clearing all completed elements', () => {
     const clearList = new Clear();
     localStorage.setItem('task', JSON.stringify(clearList.listArr));
@@ -89,7 +90,7 @@ describe('Testing', () => {
       clearList.listArr,
     ).toHaveLength(1);
     expect(
-      oldLocal
-      ).not.toEqual(newLocal);
+      oldLocal,
+    ).not.toEqual(newLocal);
   });
 });

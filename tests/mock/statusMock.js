@@ -4,15 +4,14 @@ export default class Status {
       {
         description: 'test',
         completed: true,
-        checked: true
+        checked: true,
       },
       {
         description: 'checked test',
         completed: false,
-        checked: true
+        checked: true,
       },
     ];
-
   }
 
   status() {
@@ -23,5 +22,4 @@ export default class Status {
     }
     localStorage.setItem('task', JSON.stringify(this.listArr));
   }
-
 }
