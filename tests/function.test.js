@@ -86,12 +86,13 @@ describe('Testing', () => {
     const oldLocal = JSON.parse(localStorage.getItem('task'));
     clearList.clearAll();
     const newLocal = JSON.parse(localStorage.getItem('task'));
+    /* Clear all check test */
     expect(
       clearList.listArr,
     ).toHaveLength(1);
+    /* Local storage change check */
     expect(
       oldLocal,
     ).not.toEqual(newLocal);
   });
 });
-/* Comment */
