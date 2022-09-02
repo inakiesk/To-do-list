@@ -25,14 +25,3 @@ export default class Status {
   }
 
 }
-
-
-/*
-function status() {
-  for (let i = 0; i < listArr.length; i += 1) {
-    if (listArr[i].description === 'checked test') {
-      listArr[i].completed = true;
-    }
-  }
-  localStorage.setItem('task', JSON.stringify(listArr));
-}*/

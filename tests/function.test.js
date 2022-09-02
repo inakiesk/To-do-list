@@ -2,6 +2,7 @@ import Add from './mock/addMock.js';
 import Remove from './mock/removeMock.js';
 import Edit from './mock/editMock.js';
 import Status from './mock/statusMock.js';
+import Clear from './mock/clearAllMock.js';
 
 document.body.innerHTML = `
 <div class="wrapper">
