@@ -79,7 +79,7 @@ describe('Testing', () => {
       oldLocal,
     ).not.toEqual(newLocal);
   });
-
+  /* Test clear all  */
   test('Clearing all completed elements', () => {
     const clearList = new Clear();
     localStorage.setItem('task', JSON.stringify(clearList.listArr));
