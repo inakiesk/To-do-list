@@ -3,9 +3,11 @@ const path = require('path');
 
 module.exports = {
   entry: './src/index.js',
+  devtool: 'inline-source-map',
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   mode: 'development',
   module: {
@@ -16,6 +18,10 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
     ],
