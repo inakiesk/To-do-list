@@ -1,5 +1,5 @@
-import add from './mock/addMock.js';
-import remove from './mock/removeMock.js';
+import Add from './mock/addMock.js';
+import Remove from './mock/removeMock.js';
 
 document.body.innerHTML = `
 <div class="wrapper">
@@ -19,29 +19,29 @@ document.body.innerHTML = `
 
 describe('Testing', () => {
   test('adding a task', () => {
-    const newList = new add();
-    newList.addTask();
-    /*Add test*/
+    const NewList = new Add();
+    NewList.addTask();
+    /* Add test */
     expect(
-      newList.listArr
-      ).toHaveLength(1);
-    
-    /*local storage add check*/
+      NewList.listArr,
+    ).toHaveLength(1);
+
+    /* local storage add check */
     const obtainedInfo = JSON.parse(localStorage.getItem('task'));
     expect(
-      obtainedInfo
+      obtainedInfo,
     ).not.toBe(null);
     expect(localStorage).toHaveLength(1);
   });
-  
+
   test('Removing a task', () => {
-    const removeList = new remove();
-    removeList.removeFunction();
-    /*remove test*/
+    const RemoveList = new Remove();
+    RemoveList.removeFunction();
+    /* remove test */
     expect(
-      removeList.listArr
+      RemoveList.listArr,
     ).toHaveLength(1);
-    /*local storage remove check*/
+    /* local storage remove check */
     expect(localStorage).toHaveLength(1);
   });
 });

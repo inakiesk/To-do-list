@@ -1,4 +1,4 @@
-export default class add {
+export default class Add {
   constructor() {
     this.newTask = {};
     this.listArr = [];
@@ -6,7 +6,7 @@ export default class add {
     this.newListContent = document.createElement('div');
     this.newListCheckbox = document.createElement('input');
     this.newListText = document.createElement('p');
-  };
+  }
 
   addTask() {
     this.newTask.description = 'test';
@@ -25,5 +25,5 @@ export default class add {
     this.newListText.classList.add('list-text');
     this.newListText.innerHTML = this.newTask.description;
     this.newListContent.appendChild(this.newListText);
-  };
+  }
 }
