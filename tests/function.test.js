@@ -1,4 +1,5 @@
 import add from './mock/addMock.js';
+import remove from './mock/removeMock.js';
 
 document.body.innerHTML = `
 <div class="wrapper">
@@ -25,7 +26,7 @@ describe('Testing', () => {
       newList.listArr
       ).toHaveLength(1);
     
-    /*local storage check*/
+    /*local storage add check*/
     const obtainedInfo = JSON.parse(localStorage.getItem('task'));
     expect(
       obtainedInfo
