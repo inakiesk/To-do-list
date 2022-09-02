@@ -1,5 +1,6 @@
 import Add from './mock/addMock.js';
 import Remove from './mock/removeMock.js';
+import Edit from './mock/editMock.js';
 
 document.body.innerHTML = `
 <div class="wrapper">
@@ -43,5 +44,21 @@ describe('Testing', () => {
     ).toHaveLength(1);
     /* local storage remove check */
     expect(localStorage).toHaveLength(1);
+  });
+
+  test('Editing a task', () => {
+    const editList = new Edit();
+    localStorage.setItem('task', JSON.stringify(editList.listArr));
+    const oldLocal = JSON.parse(localStorage.getItem('task'));
+    editList.editFunction();
+    const newLocal = JSON.parse(localStorage.getItem('task'));
+    /* edit test */
+    expect(
+      editList.listArr[1].description
+    ).toEqual('string has been edited');
+    /* local storage edit check */
+    expect(
+      oldLocal
+      ).not.toEqual(newLocal);
   });
 });
