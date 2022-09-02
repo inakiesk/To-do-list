@@ -79,4 +79,17 @@ describe('Testing', () => {
       oldLocal
       ).not.toEqual(newLocal);
   });
+  test('Clearing all completed elements', () => {
+    const clearList = new Clear();
+    localStorage.setItem('task', JSON.stringify(clearList.listArr));
+    const oldLocal = JSON.parse(localStorage.getItem('task'));
+    clearList.clearAll();
+    const newLocal = JSON.parse(localStorage.getItem('task'));
+    expect(
+      clearList.listArr,
+    ).toHaveLength(1);
+    expect(
+      oldLocal
+      ).not.toEqual(newLocal);
+  });
 });
